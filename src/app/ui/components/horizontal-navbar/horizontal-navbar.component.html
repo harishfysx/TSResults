@@ -1,0 +1,19 @@
+<div class="navbar-wrap">
+  <div class="navbar-button" [ngClass]="{ 'open' : openedSidebar }" (click)="openSidebar()">
+  </div>
+  <h1 class="page-title">{{ title }}</h1>
+  <div class="nav-items">
+    <div class="nav-item" [ngClass]="{ 'opened' : false }">
+      <a style="cursor: pointer" (click)="open($event)" class="nav-link">
+        <div class="name">{{loggedInUser}}</div>
+      </a>
+      <div class="dropdown-menu mini-menu">
+        <ul>
+          <li>
+            <a style="cursor: pointer" (click)="onLogOut()"><span class="icon sli-logout"></span> Log Out </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

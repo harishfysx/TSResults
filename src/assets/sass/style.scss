@@ -1,0 +1,23 @@
+@import './variable';
+
+@import './fonts';
+
+@import './structure';
+@import './typography';
+@import './helpers';
+@import './components/material-components';
+@import './components/ngxtable';
+@import './components/bootstrap';
+
+// IRART CUSTOM CSS
+.top-buffer { margin-top:20px; }
+.buttons-list {
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  margin: -5px;
+
+  .ni-btn {
+    margin: 5px;
+  }
+}

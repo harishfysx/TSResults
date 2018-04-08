@@ -1,0 +1,77 @@
+<app-nav-bar></app-nav-bar><!-- /.navbar-->
+<div class="container">
+  <div class="starter-template">
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+    <div id="selectBlock">
+
+
+
+      <mat-select placeholder="Category" style="padding-right: 30px" name="category" ngModel required #category="ngModel">
+        <mat-option *ngFor="let category of categories" [value]="category.value">
+          {{ category.name}}
+        </mat-option>
+      </mat-select>
+      <mat-select placeholder="Study Year" style="padding-right: 30px" name="studyYear" ngModel required #studyYear="ngModel">
+        <mat-option *ngFor="let studyYear of studyYears" [value]="studyYear.value">
+          {{ studyYear.name }}
+        </mat-option>
+      </mat-select>
+      <mat-select placeholder="Exam" style="padding-right: 30px" name="exam" ngModel required #exam="ngModel">
+        <mat-option *ngFor="let exam of exams" [value]="exam.value">
+          {{ exam.name }}
+        </mat-option>
+      </mat-select>
+    </div>
+      <div class="row top-buffer">
+        <div class="col offset-md-5 col-md-2 ">
+          <mat-form-field>
+            <input matInput placeholder="Hall Ticket Number"  maxlength="10" style="text-align: center" name="ticket" ngModel required #ticket="ngModel">
+          </mat-form-field>
+          <button [disabled]="!f.valid" mat-raised-button color="primary" >Search</button>
+        </div>
+      </div>
+    </form>
+      <div class="col offset-md-2 col-md-8 top-buffer">
+        <mat-progress-bar *ngIf="resultLoading" mode="indeterminate"></mat-progress-bar>
+        <div [ngSwitch]="message">
+          <div *ngSwitchCase="'result'"><ni-card
+            title="{{student[0].Name}}"
+            class="mb-0">
+            <div class="flex-xl-first mb-4 mb-md-0">
+              <div class="row">
+                <div class="col-md-4">
+                  <h5 class="mt-0">ID: {{student[0].ticket}}</h5>
+                </div>
+                <div class="col-md-4">
+                  <h5 class="mt-0">Total: {{student[0].TotalMarks}}</h5>
+                </div>
+                <div class="col-md-4">
+                  <h5 class="mt-0" > Grade: <span  [ngStyle]="{'color': getColor(student[0].TotalResult)}"> {{student[0].TotalResult}}</span></h5>
+                </div>
+              </div>
+              <div class="table-responsive mb-3">
+                <table class="table table-sm">
+                  <tbody>
+                  <tr *ngFor="let subject of student">
+                    <td style= "padding-left: 30px">{{subject.subject}}</td>
+                    <td  class="text-right">
+                      <ni-badge [color]="subject.subResult === 'F' ? 'danger' : 'success'"  [borderRadius]="false">{{subject.marks}}</ni-badge>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+              <button ni-button afterIcon="sli-printer" type="success" outline="true"></button>
+            </div>
+          </ni-card> </div>
+          <div *ngSwitchCase="'notFound'"><ni-alert [color]="'warning'"><strong>Warning!!</strong>Result not found for the above hall ticket</ni-alert></div>
+         <div *ngSwitchCase="'somethingWrong'"><ni-alert [color]="'danger'"><strong>Oh snap!</strong> Some thing went wrong please try after some time</ni-alert></div>
+        </div>
+      </div>
+
+
+  </div>
+</div>
+
+
+

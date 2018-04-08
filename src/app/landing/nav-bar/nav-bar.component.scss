@@ -1,0 +1,65 @@
+/*!
+ * Bootstrap v4.0.0-alpha.6 (https://getbootstrap.com)
+ * Copyright 2011-2017 The Bootstrap Authors
+ * Copyright 2011-2017 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+
+// Core variables and mixins
+@import "../../../assets/sass/bootstrap/variables";
+@import "../../../assets/sass/bootstrap/mixins";
+//@import "../../../assets/sass/bootstrap/custom";
+
+// Reset and dependencies
+//@import "../../../assets/sass/bootstrap/normalize";
+//@import "../../../assets/sass/bootstrap/print";
+
+// Core CSS
+//@import "../../../assets/sass/bootstrap/reboot";
+//@import "../../../assets/sass/bootstrap/type";
+//@import "../../../assets/sass/bootstrap/images";
+//@import "../../../assets/sass/bootstrap/code";
+//@import "../../../assets/sass/bootstrap/grid";
+//@import "../../../assets/sass/bootstrap/tables";
+//@import "../../../assets/sass/bootstrap/forms";
+//@import "../../../assets/sass/bootstrap/buttons";
+
+// Components
+//@import "../../../assets/sass/bootstrap/transitions";
+//@import "../../../assets/sass/bootstrap/dropdown";
+//@import "../../../assets/sass/bootstrap/button-group";
+//@import "../../../assets/sass/bootstrap/input-group";
+//@import "../../../assets/sass/bootstrap/custom-forms";
+@import "../../../assets/sass/bootstrap/nav";
+@import "../../../assets/sass/bootstrap/navbar";
+//@import "../../../assets/sass/bootstrap/card";
+//@import "../../../assets/sass/bootstrap/breadcrumb";
+//@import "../../../assets/sass/bootstrap/pagination";
+//@import "../../../assets/sass/bootstrap/badge";
+//@import "../../../assets/sass/bootstrap/jumbotron";
+//@import "../../../assets/sass/bootstrap/alert";
+//@import "../../../assets/sass/bootstrap/progress";
+//@import "../../../assets/sass/bootstrap/media";
+//@import "../../../assets/sass/bootstrap/list-group";
+//@import "../../../assets/sass/bootstrap/responsive-embed";
+//@import "../../../assets/sass/bootstrap/close";
+
+// Components w/ JavaScript
+//@import "../../../assets/sass/bootstrap/modal";
+//@import "../../../assets/sass/bootstrap/tooltip";
+//@import "../../../assets/sass/bootstrap/popover";
+//@import "../../../assets/sass/bootstrap/carousel";
+
+// Utility classes
+//@import "../../../assets/sass/bootstrap/utilities";
+
+.bg-custom{
+  background-color: #252d47;
+}
+
+.custom-active {
+  background: #40e1c4;
+}
+
+
+
