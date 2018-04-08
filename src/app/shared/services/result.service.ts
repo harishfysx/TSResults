@@ -26,9 +26,24 @@ export class ResultService {
     params.set('exam', queryObj.exam);
     params.set('state', queryObj.state);
     params.set('category', queryObj.category);
-    const url = `${this.studentsUrl}/${queryObj.ticket}`;
-    return this.http.get(url, { search: params })
-      .catch(this.errorHanlder);
+    let url = '';
+    if (queryObj.year === '2018' && queryObj.exam === 'R' && queryObj.state === 'TS' &&
+        queryObj.category === 'G' && queryObj.studyYear === 'I') {
+       url = `${this.studentsUrl}/${queryObj.ticket}`;
+    } else {
+       url = 'https://w3bqv0z6y8.execute-api.ap-south-1.amazonaws.com/DEV/notreleased';
+    }
+    /*
+    else if (queryObj.year === '2018' && queryObj.exam === 'R' && queryObj.state === 'TS' &&
+      queryObj.category === 'V' && queryObj.studyYear === 'I') {
+    } else if (queryObj.year === '2018' && queryObj.exam === 'R' && queryObj.state === 'TS' &&
+      queryObj.category === 'G' && queryObj.studyYear === 'II') {
+    } else if (queryObj.year === '2018' && queryObj.exam === 'R' && queryObj.state === 'TS' &&
+      queryObj.category === 'V' && queryObj.studyYear === 'II') {
+    }*/
+    console.log('pring url', url);
+    // const url = `${this.studentsUrl}/${queryObj.ticket}`;
+    return this.http.get(url).catch(this.errorHanlder);
   }
   private errorHanlder(error: Response) {
     console.log('called errorHandler');

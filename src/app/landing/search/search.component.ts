@@ -3,7 +3,7 @@ import {NgForm} from '@angular/forms';
 import {ResultService} from '../../shared/services/result.service';
 import {AppError} from '../../shared/errors/app.error';
 import {NotFoundError} from '../../shared/errors/not.found.error';
-import {RefDataService} from '../../shared/services/ref-data.service';
+import {TicketQueryModel} from '../../shared/models/ticketQuery.model';
 
 @Component({
   selector: 'app-search',
@@ -15,7 +15,6 @@ export class SearchComponent implements OnInit {
   message;
   student: any;
   resultLoading = false;
-  years;
   categories;
   studyYears;
   exams;
@@ -23,16 +22,27 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.studyYears = [{name: 'I-Year', value: 'I-Year'}, {name : 'II-Year', value: 'II-Year'}];
-    this.categories = [{name: 'General', value: 'General'}, {name : 'Vocational', value: 'Vocational'}];
-    this.exams = [{name: 'Regular', value: 'Regular'}, {name : 'Supplementary', value: 'Supplementary'}];
+    this.studyYears = [{name: 'I-Year', value: 'I'}, {name : 'II-Year', value: 'II'}];
+    this.categories = [{name: 'General', value: 'G'}, {name : 'Vocational', value: 'V'}];
+    this.exams = [{name: 'Regular', value: 'R'}, {name : 'Supplementary', value: 'S'}];
   }
   onSubmit(f: NgForm) {
     this.studentFound = !this.studentFound;
     this.resultLoading = true;
-    this.resultService.getStudent(f.value.ticket).subscribe((resp: any) => {
+    const queryObj: TicketQueryModel = new TicketQueryModel;
+    queryObj.state = 'TS';
+    queryObj.year = '2018';
+    queryObj.studyYear = f.value.studyYear;
+    queryObj.ticket = f.value.ticket;
+    queryObj.exam = f.value.exam;
+    queryObj.category = f.value.category;
+
+    this.resultService.getStudentUnsecured (queryObj).subscribe((resp: any) => {
       console.log(resp.json());
-      if (resp.json != null && resp.json().length !==  0 ) {
+      if (resp.json().message === '600') {
+        this.resultLoading = false;
+        this.message = 'not released';
+      } else if (resp.json != null && resp.json().length !==  0 ) {
         this.student = resp.json();
         this.message = 'result';
       }else {

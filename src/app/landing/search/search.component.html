@@ -4,8 +4,6 @@
     <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
     <div id="selectBlock">
 
-
-
       <mat-select placeholder="Category" style="padding-right: 30px" name="category" ngModel required #category="ngModel">
         <mat-option *ngFor="let category of categories" [value]="category.value">
           {{ category.name}}
@@ -65,6 +63,7 @@
             </div>
           </ni-card> </div>
           <div *ngSwitchCase="'notFound'"><ni-alert [color]="'warning'"><strong>Warning!!</strong>Result not found for the above hall ticket</ni-alert></div>
+          <div *ngSwitchCase="'not released'"><ni-alert [color]="'primary'"><strong>Warning!!</strong>No Database found for this combination.</ni-alert></div>
          <div *ngSwitchCase="'somethingWrong'"><ni-alert [color]="'danger'"><strong>Oh snap!</strong> Some thing went wrong please try after some time</ni-alert></div>
         </div>
       </div>
