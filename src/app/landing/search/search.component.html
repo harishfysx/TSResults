@@ -3,7 +3,6 @@
   <div class="starter-template">
     <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
     <div id="selectBlock">
-
       <mat-select placeholder="Category" style="padding-right: 30px" name="category" ngModel required #category="ngModel">
         <mat-option *ngFor="let category of categories" [value]="category.value">
           {{ category.name}}

@@ -31,7 +31,7 @@ export class SearchComponent implements OnInit {
     this.resultLoading = true;
     const queryObj: TicketQueryModel = new TicketQueryModel;
     queryObj.state = 'TS';
-    queryObj.year = '2018';
+    queryObj.year = '2017';
     queryObj.studyYear = f.value.studyYear;
     queryObj.ticket = f.value.ticket;
     queryObj.exam = f.value.exam;

@@ -20,16 +20,13 @@ export class ResultService {
     return this.http.get(url).catch(this.errorHanlder);
   }
   getStudentUnsecured (queryObj: TicketQueryModel) {
-    const params: URLSearchParams = new URLSearchParams();
-    params.set('studyYear', queryObj.studyYear);
-    params.set('year', queryObj.year);
-    params.set('exam', queryObj.exam);
-    params.set('state', queryObj.state);
-    params.set('category', queryObj.category);
     let url = '';
-    if (queryObj.year === '2018' && queryObj.exam === 'R' && queryObj.state === 'TS' &&
+    if (queryObj.year === '2017' && queryObj.exam === 'S' && queryObj.state === 'TS' &&
         queryObj.category === 'G' && queryObj.studyYear === 'I') {
        url = `${this.studentsUrl}/${queryObj.ticket}`;
+    } else if (queryObj.year === '2017' && queryObj.exam === 'S' && queryObj.state === 'TS' &&
+      queryObj.category === 'G' && queryObj.studyYear === 'II') {
+       url = 'https://w3bqv0z6y8.execute-api.ap-south-1.amazonaws.com/DEV/2017-ii-gen-sup/' + queryObj.ticket;
     } else {
        url = 'https://w3bqv0z6y8.execute-api.ap-south-1.amazonaws.com/DEV/notreleased';
     }
