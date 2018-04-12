@@ -1,6 +1,7 @@
 <app-nav-bar></app-nav-bar><!-- /.navbar-->
 <div class="container">
   <div class="starter-template">
+
     <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
     <div id="selectBlock">
       <mat-select placeholder="Category" style="padding-right: 30px" name="category" ngModel required #category="ngModel">
@@ -58,7 +59,6 @@
                   </tbody>
                 </table>
               </div>
-              <button ni-button afterIcon="sli-printer" type="success" outline="true"></button>
             </div>
           </ni-card> </div>
           <div *ngSwitchCase="'notFound'"><ni-alert [color]="'warning'"><strong>Warning!!</strong>Result not found for the above hall ticket</ni-alert></div>

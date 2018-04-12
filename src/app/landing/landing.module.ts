@@ -9,6 +9,7 @@ import {FormsModule} from '@angular/forms';
 import {NiComponentsModule} from '../ni-components/ni-components.module';
 import {UiModule} from '../ui/ui.module';
 import { MatOptionModule, MatSelectModule, MatInputModule, MatButtonModule } from '@angular/material';
+import {AnalyticsComponent} from './analytics/analytics.component';
 
 
 
@@ -29,6 +30,7 @@ import { MatOptionModule, MatSelectModule, MatInputModule, MatButtonModule } fro
   ],
   declarations: [LandingComponent,
     SearchComponent,
+    AnalyticsComponent,
     NavBarComponent],
   exports: []
 })

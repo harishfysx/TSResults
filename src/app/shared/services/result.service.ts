@@ -21,13 +21,28 @@ export class ResultService {
   }
   getStudentUnsecured (queryObj: TicketQueryModel) {
     let url = '';
+    const params: URLSearchParams = new URLSearchParams();
     if (queryObj.year === '2017' && queryObj.exam === 'S' && queryObj.state === 'TS' &&
-        queryObj.category === 'G' && queryObj.studyYear === 'I') {
-       url = `${this.studentsUrl}/${queryObj.ticket}`;
+      queryObj.category === 'G' && queryObj.studyYear === 'I') {
+      params.set('maindb', '17_G_I_S_MAIN');
+      params.set('inddb', '17_G_I_S_IND');
+      url = `${this.studentsUrl}/${queryObj.ticket}`;
     } else if (queryObj.year === '2017' && queryObj.exam === 'S' && queryObj.state === 'TS' &&
       queryObj.category === 'G' && queryObj.studyYear === 'II') {
-       url = 'https://w3bqv0z6y8.execute-api.ap-south-1.amazonaws.com/DEV/2017-ii-gen-sup/' + queryObj.ticket;
-    } else {
+      params.set('maindb', '17_G_II_S_MAIN');
+      params.set('inddb', '17_G_II_S_IND');
+      url = `${this.studentsUrl}/${queryObj.ticket}`;
+    } else if (queryObj.year === '2017' && queryObj.exam === 'S' && queryObj.state === 'TS' &&
+      queryObj.category === 'V' && queryObj.studyYear === 'I') {
+      params.set('maindb', '17_V_I_S_MAIN');
+      params.set('inddb', '17_V_I_S_IND');
+      url = `${this.studentsUrl}/${queryObj.ticket}`;
+    }else if (queryObj.year === '2017' && queryObj.exam === 'S' && queryObj.state === 'TS' &&
+      queryObj.category === 'V' && queryObj.studyYear === 'II') {
+      params.set('maindb', '17_V_II_S_MAIN');
+      params.set('inddb', '17_V_II_S_IND');
+      url = `${this.studentsUrl}/${queryObj.ticket}`;
+    }else {
        url = 'https://w3bqv0z6y8.execute-api.ap-south-1.amazonaws.com/DEV/notreleased';
     }
     /*
@@ -40,7 +55,7 @@ export class ResultService {
     }*/
     console.log('pring url', url);
     // const url = `${this.studentsUrl}/${queryObj.ticket}`;
-    return this.http.get(url).catch(this.errorHanlder);
+    return this.http.get(url, { search: params }).catch(this.errorHanlder);
   }
   private errorHanlder(error: Response) {
     console.log('called errorHandler');
