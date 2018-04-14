@@ -1,3 +1,52 @@
-<p>
-  analytics works!
-</p>
+<app-nav-bar title="Analaytics - Beta Version"></app-nav-bar><!-- /.navbar-->
+<div class = "container">
+<div class="offset-md-3 col-md-6">
+  <ni-card title="Fill & hit Analyze to see how many students got same marks like you in each subject!!">
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+      <div class = "row">
+        <div class = "col-md-9">
+          <mat-select placeholder="Subject"  style="width: 50%"  name="subName" ngModel required #subject="ngModel">
+            <mat-option *ngFor="let subject of subjects" [value]="subject.value">
+              {{ subject.name }}
+            </mat-option>
+          </mat-select>
+        </div>
+        <div class = "col-md-3">
+          <mat-form-field>
+            <input matInput placeholder="Marks"  maxlength="3" style="text-align: center" name="marks" ngModel required #ticket="ngModel">
+          </mat-form-field>
+        </div>
+
+
+      </div>
+
+      <div class="row">
+        <div class="col-md-9">
+          <mat-select placeholder="Year-Category-StudyYear"  style="width: 70%"  name="inddb" ngModel required #subject="ngModel">
+            <mat-option *ngFor="let database of databases" [value]="database.value">
+              {{ database.name }}
+            </mat-option>
+          </mat-select>
+        </div>
+
+        <div class="cl-md-3">
+          <button [disabled]="!f.valid" mat-raised-button color="primary" >Analyze</button>
+        </div>
+        <mat-progress-bar *ngIf="resultLoading" mode="indeterminate"></mat-progress-bar>
+      </div>
+      <p class="top-buffer"> {{this.message}}</p>
+    </form>
+    <div id="amchart-1" [style.width.%]="100" [style.height.px]="400"></div>
+
+  </ni-card>
+
+</div>
+
+
+ </div>
+
+
+
+
+
+

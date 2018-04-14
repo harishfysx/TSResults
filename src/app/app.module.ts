@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import {ErrorHandler, NgModule} from '@angular/core';
-
 import { AppComponent } from './app.component';
 import {AppRoutingModule} from './app.routing.module';
 import {UiModule} from './ui/ui.module';
@@ -16,12 +15,14 @@ import {CollectionsService} from './shared/services/collections.service';
 import {RefDataService} from './shared/services/ref-data.service';
 import {MATERIAL_COMPATIBILITY_MODE} from '@angular/material';
 import {MockUpService} from './shared/demos/mockup.service';
+import {HomepageComponent} from './homepage/homepage.component';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomepageComponent
   ],
   imports: [
     BrowserModule,

@@ -10,7 +10,8 @@ import {NiComponentsModule} from '../ni-components/ni-components.module';
 import {UiModule} from '../ui/ui.module';
 import { MatOptionModule, MatSelectModule, MatInputModule, MatButtonModule } from '@angular/material';
 import {AnalyticsComponent} from './analytics/analytics.component';
-
+import {NgxChartsModule} from '@swimlane/ngx-charts';
+import {MatProgressBarModule} from '@angular/material';
 
 
 @NgModule({
@@ -21,7 +22,9 @@ import {AnalyticsComponent} from './analytics/analytics.component';
     MatInputModule,
     MatButtonModule,
     CommonModule,
+    MatProgressBarModule,
     FormsModule,
+    NgxChartsModule,
     NiComponentsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAU9f7luK3J31nurL-Io3taRKF7w9BItQE'

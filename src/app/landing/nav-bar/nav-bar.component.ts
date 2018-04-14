@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {AuthService} from '../../shared/services/auth.service';
 
 @Component({
@@ -7,6 +7,7 @@ import {AuthService} from '../../shared/services/auth.service';
   styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent implements OnInit {
+  @Input('title') title: string;
   isLoggedIn: boolean;
   constructor(private authService: AuthService) { }
 

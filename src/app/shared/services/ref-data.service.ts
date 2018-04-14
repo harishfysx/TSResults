@@ -46,6 +46,12 @@ export class RefDataService {
       .map(response => response.json())
       .catch(this.errorHanlder);
   }
+  getGenSubjects() {
+    const url = 'https://4nzxjoldk8.execute-api.ap-south-1.amazonaws.com/DEV/getgensubs';
+    return this.http.get(url)
+      .map(response => response.json())
+      .catch(this.errorHanlder);
+  }
   private errorHanlder(error: Response) {
     console.log('called errorHandler')
     if (error.status === 404) {

@@ -11,9 +11,10 @@ import {TicketQueryModel} from '../../shared/models/ticketQuery.model';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
+  message: string;
   studentFound = false;
-  message;
   student: any;
+  years;
   resultLoading = false;
   categories;
   studyYears;
@@ -25,20 +26,21 @@ export class SearchComponent implements OnInit {
     this.studyYears = [{name: 'I-Year', value: 'I'}, {name : 'II-Year', value: 'II'}];
     this.categories = [{name: 'General', value: 'G'}, {name : 'Vocational', value: 'V'}];
     this.exams = [{name: 'Regular', value: 'R'}, {name : 'Supplementary', value: 'S'}];
+    this.years = [{name: '2018', value: '2018'}, {name : '2017', value: '2017'}];
   }
   onSubmit(f: NgForm) {
     this.studentFound = !this.studentFound;
     this.resultLoading = true;
     const queryObj: TicketQueryModel = new TicketQueryModel;
     queryObj.state = 'TS';
-    queryObj.year = '2017';
+    queryObj.year = f.value.year;
     queryObj.studyYear = f.value.studyYear;
     queryObj.ticket = f.value.ticket;
     queryObj.exam = f.value.exam;
     queryObj.category = f.value.category;
 
     this.resultService.getStudentUnsecured (queryObj).subscribe((resp: any) => {
-      console.log(resp.json());
+      // console.log(resp.json());
       if (resp.json().message === '600') {
         this.resultLoading = false;
         this.message = 'not released';
@@ -52,7 +54,7 @@ export class SearchComponent implements OnInit {
       },
       (error: AppError) => {
         if (error instanceof  NotFoundError) {
-          console.log('its not found error');
+          // console.log('its not found error');
           this.resultLoading = false;
         }else {
           throw error ;
